@@ -1,0 +1,54 @@
+.container {
+    display: flex;
+    padding: 1em;
+}
+
+.carousel {
+    width: 100%;
+    overflow-x: auto;
+    margin: 3em auto;
+    display: flex;
+    gap: 1em;
+    scroll-behavior: smooth;
+    anchor-name: --carousel;
+    scroll-snap-type: x mandatory;
+}
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel::scroll-button(right), .carousel::scroll-button(left)  {
+    content: '>';
+    border: none;
+    background-color: #6b8f25;
+    font-size: 2rem;
+    color: white;
+    height: 60px;
+    width: 60px;
+    border-radius: 30%;
+    padding: 0;
+    cursor: pointer;
+    position: fixed;
+    position-anchor: --carousel;
+    position-area: right center;
+    translate: -50%;
+    z-index: 10;
+    transition: transform 0.3s ease;
+}
+
+.carousel::scroll-button(left) {
+    content: '<';
+    position-area: left center;
+    translate: 50%;
+}
+
+.carousel::scroll-button(right):disabled, .carousel::scroll-button(left):disabled  {
+    opacity: 0.5;
+    cursor: auto;
+} 
+
+.carousel::scroll-button(right):hover, .carousel::scroll-button(left):hover  {
+    background-color: #9bcc38;
+    transform: translatey(-2px);
+} 
